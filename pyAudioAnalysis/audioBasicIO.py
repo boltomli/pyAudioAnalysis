@@ -11,8 +11,7 @@ from pydub import AudioSegment
 from scipy.io import wavfile
 
 
-def convert_dir_mp3_to_wav(audio_folder, sampling_rate, num_channels,
-                           use_tags=False):
+def convert_dir_mp3_to_wav(audio_folder, sampling_rate, num_channels, use_tags=False):
     """
     This function converts the MP3 files stored in a folder to WAV. If required,
     the output names of the WAV files are based on MP3 tags, otherwise the same
@@ -24,7 +23,7 @@ def convert_dir_mp3_to_wav(audio_folder, sampling_rate, num_channels,
      - use_tags:        True if the WAV filename is generated on MP3 tags
     """
 
-    types = (audio_folder + os.sep + '*.mp3',)  # the tuple of file types
+    types = (audio_folder + os.sep + "*.mp3",)  # the tuple of file types
     files_list = []
 
     for files in types:
@@ -37,21 +36,35 @@ def convert_dir_mp3_to_wav(audio_folder, sampling_rate, num_channels,
             title = audio_file.tag.title
             if artist != None and title != None:
                 if len(title) > 0 and len(artist) > 0:
-                    filename = ntpath.split(f)[0] + os.sep + \
-                                  artist.replace(","," ") + " --- " + \
-                                  title.replace(","," ") + ".wav"
+                    filename = (
+                        ntpath.split(f)[0]
+                        + os.sep
+                        + artist.replace(",", " ")
+                        + " --- "
+                        + title.replace(",", " ")
+                        + ".wav"
+                    )
                 else:
                     filename = f.replace(".mp3", ".wav")
             else:
                 filename = f.replace(".mp3", ".wav")
         else:
             filename = f.replace(".mp3", ".wav")
-        command = "ffmpeg -i \"" + f + "\" -ar " + str(sampling_rate) + \
-                  " -ac " + str(num_channels) + " \"" + filename + "\""
+        command = (
+            'ffmpeg -i "'
+            + f
+            + '" -ar '
+            + str(sampling_rate)
+            + " -ac "
+            + str(num_channels)
+            + ' "'
+            + filename
+            + '"'
+        )
         print(command)
         os.system(
-            command.encode('ascii', 'ignore').decode('unicode_escape').replace(
-                "\0", ""))
+            command.encode("ascii", "ignore").decode("unicode_escape").replace("\0", "")
+        )
 
 
 def convert_dir_fs_wav_to_wav(audio_folder, sampling_rate, num_channels):
@@ -64,23 +77,40 @@ def convert_dir_fs_wav_to_wav(audio_folder, sampling_rate, num_channels):
      - num_channels:    the number of channesl of the generated WAV files
     """
 
-    types = (audio_folder + os.sep + '*.wav',)  # the tuple of file types
+    types = (audio_folder + os.sep + "*.wav",)  # the tuple of file types
 
     files_list = []
     for files in types:
         files_list.extend(glob.glob(files))
 
-    output_folder = audio_folder + os.sep + "Fs" + str(sampling_rate) + \
-                    "_" + "NC" + str(num_channels)
+    output_folder = (
+        audio_folder
+        + os.sep
+        + "Fs"
+        + str(sampling_rate)
+        + "_"
+        + "NC"
+        + str(num_channels)
+    )
     if os.path.exists(output_folder) and output_folder != ".":
         shutil.rmtree(output_folder)
     os.makedirs(output_folder)
 
     for f in files_list:
         _, filename = ntpath.split(f)
-        command = "avconv -i \"" + f + "\" -ar " + str(sampling_rate) + \
-                  " -ac " + str(num_channels) + " \"" + output_folder + \
-                  os.sep + filename + "\""
+        command = (
+            'avconv -i "'
+            + f
+            + '" -ar '
+            + str(sampling_rate)
+            + " -ac "
+            + str(num_channels)
+            + ' "'
+            + output_folder
+            + os.sep
+            + filename
+            + '"'
+        )
         print(command)
         os.system(command)
 
@@ -95,10 +125,10 @@ def read_audio_file(input_file):
     signal = np.array([])
     if isinstance(input_file, str):
         extension = os.path.splitext(input_file)[1].lower()
-        if extension in ['.aif', '.aiff']:
+        if extension in [".aif", ".aiff"]:
             sampling_rate, signal = read_aif(input_file)
-        elif extension in ['.wav']:
-            sampling_rate, signal = wavfile.read(input_file) # from scipy.io
+        elif extension in [".wav"]:
+            sampling_rate, signal = wavfile.read(input_file)  # from scipy.io
         elif extension in [".mp3", ".au", ".ogg"]:
             sampling_rate, signal = read_audio_generic(input_file)
         else:
@@ -122,7 +152,7 @@ def read_aif(path):
 def read_audio_generic(input_file):
     """
     Function to read audio files with the following extensions
-    [".mp3", ".au", ".ogg"], containing PCM (int16 or int32) data 
+    [".mp3", ".au", ".ogg"], containing PCM (int16 or int32) data
     """
     sampling_rate = -1
     signal = np.array([])
@@ -138,7 +168,7 @@ def read_audio_generic(input_file):
             sampling_rate = audiofile.frame_rate
             temp_signal = []
             for chn in list(range(audiofile.channels)):
-                temp_signal.append(data[chn::audiofile.channels])
+                temp_signal.append(data[chn :: audiofile.channels])
             signal = np.array(temp_signal).T
     except:
         print("Error: file not found or other I/O error. (DECODING FAILED)")
