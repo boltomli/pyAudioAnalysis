@@ -2,10 +2,9 @@ from __future__ import print_function
 import math
 import numpy as np
 import sys
-from scipy.fftpack import fft
+from scipy.fftpack import fft, dct
 import matplotlib.pyplot as plt
 from scipy.signal import lfilter
-from scipy.fftpack.realtransforms import dct
 from tqdm import tqdm
 
 eps = sys.float_info.epsilon

@@ -114,17 +114,7 @@ def read_aif(path):
     """
     Read audio file with .aif extension
     """
-    sampling_rate = -1
-    signal = np.array([])
-    try:
-        with aifc.open(path, 'r') as s:
-            nframes = s.getnframes()
-            strsig = s.readframes(nframes)
-            signal = np.fromstring(strsig, np.short).byteswap()
-            sampling_rate = s.getframerate()
-    except:
-        print("Error: read aif file. (DECODING FAILED)")
-    return sampling_rate, signal
+    return read_audio_generic(path)
 
 
 def read_audio_generic(input_file):
