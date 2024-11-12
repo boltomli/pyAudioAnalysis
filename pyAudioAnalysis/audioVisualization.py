@@ -1,18 +1,25 @@
 from __future__ import print_function
-import shutil, struct, simplejson
-from scipy.spatial import distance
-from pylab import *
+
 import ntpath
 import os
+import shutil
+import struct
+
+import simplejson
+from pylab import *
+from scipy.spatial import distance
+
 sys.path.insert(0, os.path.join(
     os.path.dirname(os.path.realpath(__file__)), "../"))
-from pyAudioAnalysis import MidTermFeatures as aF
-from pyAudioAnalysis import audioTrainTest as aT
+import sys
+
+import plotly.express as px
 import sklearn
 import sklearn.discriminant_analysis
-import sys
 from sklearn.preprocessing import StandardScaler
-import plotly.express as px
+
+from pyAudioAnalysis import MidTermFeatures as aF
+from pyAudioAnalysis import audioTrainTest as aT
 
 
 def generateColorMap():

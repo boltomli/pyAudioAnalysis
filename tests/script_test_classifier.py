@@ -1,10 +1,13 @@
 from __future__ import print_function
-from pyAudioAnalysis import audioBasicIO
-from pyAudioAnalysis import MidTermFeatures
-from pyAudioAnalysis import audioTrainTest as aT
-from pyAudioAnalysis import audioSegmentation as aS
-import matplotlib.pyplot as plt
+
 import argparse
+
+import matplotlib.pyplot as plt
+
+from pyAudioAnalysis import MidTermFeatures, audioBasicIO
+from pyAudioAnalysis import audioSegmentation as aS
+from pyAudioAnalysis import audioTrainTest as aT
+
 
 def parseArguments():
     parser = argparse.ArgumentParser(prog='PROG')

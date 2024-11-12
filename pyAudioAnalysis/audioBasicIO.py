@@ -1,13 +1,15 @@
 from __future__ import print_function
-import os
+
 import glob
-import aifc
-import eyed3
 import ntpath
+import os
 import shutil
+
+import eyed3
 import numpy as np
 from pydub import AudioSegment
 from scipy.io import wavfile
+
 
 def convert_dir_mp3_to_wav(audio_folder, sampling_rate, num_channels,
                            use_tags=False):
@@ -128,9 +130,9 @@ def read_audio_generic(input_file):
         audiofile = AudioSegment.from_file(input_file)
         data = np.array([])
         if audiofile.sample_width == 2:
-            data = np.fromstring(audiofile._data, np.int16)
+            data = np.frombuffer(audiofile._data, np.int16)
         elif audiofile.sample_width == 4:
-            data = np.fromstring(audiofile._data, np.int32)
+            data = np.frombuffer(audiofile._data, np.int32)
 
         if data.size > 0:
             sampling_rate = audiofile.frame_rate

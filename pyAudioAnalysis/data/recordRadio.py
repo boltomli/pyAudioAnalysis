@@ -1,4 +1,9 @@
-import sys, os, gi, time
+import os
+import sys
+import time
+
+import gi
+
 gi.require_version('Gst', '1.0')
 from gi.repository import GObject, Gst
 

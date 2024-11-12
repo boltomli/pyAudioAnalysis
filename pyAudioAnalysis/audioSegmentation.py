@@ -1,25 +1,27 @@
 from __future__ import print_function
-import os
+
 import csv
 import glob
+import os
+import pickle as cpickle
+import sys
+
+import hmmlearn.hmm
+import matplotlib.pyplot as plt
+import numpy as np
 import scipy
 import sklearn
-import numpy as np
-import hmmlearn.hmm
 import sklearn.cluster
-import pickle as cpickle
-import matplotlib.pyplot as plt
-from scipy.spatial import distance
 import sklearn.discriminant_analysis
+from scipy.spatial import distance
 from sklearn.preprocessing import StandardScaler
-import sys
+
 sys.path.insert(0, os.path.join(
     os.path.dirname(os.path.realpath(__file__)), "../"))
 import pyAudioAnalysis.audioBasicIO as audioBasicIO
 import pyAudioAnalysis.audioTrainTest as at
 import pyAudioAnalysis.MidTermFeatures as mtf
 import pyAudioAnalysis.ShortTermFeatures as stf
-
 
 """ General utility functions """
 def smooth_moving_avg(signal, window=11):

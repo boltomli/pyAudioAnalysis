@@ -1,17 +1,19 @@
 from __future__ import print_function
+
 import argparse
-import os
-import numpy
 import glob
-import matplotlib.pyplot as plt
-import ShortTermFeatures as sF
-import MidTermFeatures as aF
-import audioTrainTest as aT
-import audioSegmentation as aS
-import audioVisualization as aV
+import os
+
 import audioBasicIO
-import scipy.io.wavfile as wavfile
+import audioSegmentation as aS
+import audioTrainTest as aT
+import audioVisualization as aV
 import matplotlib.patches
+import matplotlib.pyplot as plt
+import MidTermFeatures as aF
+import numpy
+import scipy.io.wavfile as wavfile
+import ShortTermFeatures as sF
 
 
 def dirMp3toWavWrapper(directory, samplerate, channels):

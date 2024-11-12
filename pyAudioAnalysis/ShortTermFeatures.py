@@ -1,9 +1,11 @@
 from __future__ import print_function
+
 import math
-import numpy as np
 import sys
-from scipy.fftpack import fft, dct
+
 import matplotlib.pyplot as plt
+import numpy as np
+from scipy.fftpack import dct, fft
 from scipy.signal import lfilter
 from tqdm import tqdm
 

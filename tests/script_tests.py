@@ -1,13 +1,15 @@
 from __future__ import print_function
-import sys
+
 import os
+import sys
+
 sys.path.insert(0, os.path.join(os.path.dirname(
     os.path.realpath(__file__)), "../"))
-from pyAudioAnalysis import audioBasicIO
-from pyAudioAnalysis import ShortTermFeatures
-from pyAudioAnalysis import audioTrainTest as aT
-from pyAudioAnalysis import audioSegmentation as aS
 import matplotlib.pyplot as plt
+
+from pyAudioAnalysis import ShortTermFeatures, audioBasicIO
+from pyAudioAnalysis import audioSegmentation as aS
+from pyAudioAnalysis import audioTrainTest as aT
 
 root_data_path = "/Users/tyiannak/ResearchData/Audio Dataset/pyAudioAnalysisData/"
 

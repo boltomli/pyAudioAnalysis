@@ -1,10 +1,9 @@
-import sys
 import os
+import sys
+
 sys.path.insert(0, os.path.join(os.path.dirname(
     os.path.realpath(__file__)), "../"))
-from pyAudioAnalysis import audioBasicIO
-from pyAudioAnalysis import ShortTermFeatures
-from pyAudioAnalysis import MidTermFeatures
+from pyAudioAnalysis import MidTermFeatures, ShortTermFeatures, audioBasicIO
 
 
 def test_feature_extraction_short():

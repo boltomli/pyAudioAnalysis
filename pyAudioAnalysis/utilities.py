@@ -1,4 +1,8 @@
-import sys, os, numpy
+import os
+import sys
+
+import numpy
+
 
 def isfloat(x):
 	"""

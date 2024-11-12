@@ -1,10 +1,11 @@
 import sys
-from pyAudioAnalysis import audioBasicIO
-from pyAudioAnalysis import MidTermFeatures
-from pyAudioAnalysis import audioTrainTest as aT
-from pyAudioAnalysis import audioSegmentation as aS
-import matplotlib.pyplot as plt
 import time
+
+import matplotlib.pyplot as plt
+
+from pyAudioAnalysis import MidTermFeatures, audioBasicIO
+from pyAudioAnalysis import audioSegmentation as aS
+from pyAudioAnalysis import audioTrainTest as aT
 
 nExp = 4
 

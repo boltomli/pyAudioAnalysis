@@ -2,7 +2,10 @@
 # convertToWav <folder path> <sampling rate> <number of channels>
 #
 
-import glob, sys, os
+import glob
+import os
+import sys
+
 
 def getVideoFilesFromFolder(dirPath):
 	types = (dirPath+os.sep+'*.webm', dirPath+os.sep+'*.avi', dirPath+os.sep+'*.mkv', dirPath+os.sep+'*.mp4', dirPath+os.sep+'*.mp3', dirPath+os.sep+'*.flac', dirPath+os.sep+'*.ogg') # the tuple of file types

@@ -1,15 +1,17 @@
 from __future__ import print_function
-import os
-import time
+
 import glob
-import numpy as np
-import matplotlib.pyplot as plt
+import os
 import sys
+import time
+
+import matplotlib.pyplot as plt
+import numpy as np
+
 sys.path.insert(0, os.path.join(
     os.path.dirname(os.path.realpath(__file__)), "../"))
-from pyAudioAnalysis import utilities
-from pyAudioAnalysis import audioBasicIO
-from pyAudioAnalysis import ShortTermFeatures
+from pyAudioAnalysis import ShortTermFeatures, audioBasicIO, utilities
+
 eps = 0.00000001
 
 """ Time-domain audio features """

@@ -1,27 +1,30 @@
 from __future__ import print_function
-from imblearn.under_sampling import RandomUnderSampler
-from imblearn.over_sampling import SMOTE
-from sklearn.model_selection import GroupShuffleSplit
-from pyAudioAnalysis import audioBasicIO
-from pyAudioAnalysis import MidTermFeatures as aF
-import sys
-import numpy as np
-import os
-import glob
-import pickle as cPickle
+
 import csv
+import glob
 import ntpath
-from scipy import linalg as la
-from scipy.spatial import distance
-import sklearn.svm
+import os
+import pickle as cPickle
+import sys
+
+import numpy as np
+import plotly
+import plotly.graph_objs as go
+import plotly.subplots
 import sklearn.decomposition
 import sklearn.ensemble
-import plotly
-import plotly.subplots
-import plotly.graph_objs as go
 import sklearn.metrics
-from sklearn.model_selection import train_test_split
+import sklearn.svm
+from imblearn.over_sampling import SMOTE
+from imblearn.under_sampling import RandomUnderSampler
+from scipy import linalg as la
+from scipy.spatial import distance
+from sklearn.model_selection import GroupShuffleSplit, train_test_split
 from sklearn.preprocessing import StandardScaler
+
+from pyAudioAnalysis import MidTermFeatures as aF
+from pyAudioAnalysis import audioBasicIO
+
 sys.path.insert(0, os.path.join(
     os.path.dirname(os.path.realpath(__file__)), "../"))
 
